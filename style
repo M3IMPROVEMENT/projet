@@ -1,0 +1,21 @@
+*{
+    background: white;
+}
+
+p{
+ background-color:whitesmoke;
+   align="center" 
+  border :3px black outset ;
+  font-size: 22px  ;
+    font-family :comic sans ms;
+   text-align:center;
+
+}
+h1
+{
+    font-family: monospace;
+     font-style: italic;
+    text-align:center;
+    color :palevioletred;
+font-size: 70px
+}
