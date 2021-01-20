@@ -1,0 +1,20 @@
+*{
+    background: floralwhite
+}
+
+p{
+ 
+   align="center" 
+  border :3px black outset ;
+  font-size: 22px  ;
+
+   text-align:justify;
+
+}
+h1{
+    
+     
+    text-align:center;
+    color :darkblue;
+font-size: 70px
+}
