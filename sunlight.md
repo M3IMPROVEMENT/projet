@@ -41,3 +41,5 @@ df_types = pd.DataFrame(results, columns=["file", "type"])
 print(df_types["type"].value_counts())
 
 df_types.to_excel("file_types.xlsx", index=False)
+Series([], Name: count, dtype: int64)
+
