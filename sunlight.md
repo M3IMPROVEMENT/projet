@@ -1,2 +1,3 @@
-final_df.to_excel("master_companies.xlsx", index=False)
-print("DONE")
+from pathlib import Path
+
+print(list(Path(".").rglob("master_companies.xlsx")))
