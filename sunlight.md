@@ -1,25 +1,26 @@
-from pathlib import Path
-import pandas as pd
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+Cell In[86], line 25
+     21 
+     22     except Exception as e:
+     23         print("Error:", file.name, e)
+     24 
+---> 25 final_df = pd.concat(all_data, ignore_index=True)
 
-files = list(Path("Data").rglob("*.xlsx"))
+File ~\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\core\reshape\concat.py:407, in concat(objs, axis, join, ignore_index, keys, levels, names, verify_integrity, sort, copy)
+    402 else:  # pragma: no cover
+    403     raise ValueError(
+    404         "Only can inner (intersect) or outer (union) join the other axis"
+    405     )
+--> 407 objs, keys, ndims = _clean_keys_and_objs(objs, keys)
+    409 if sort is lib.no_default:
+    410     if axis == 0:
 
-all_data = []
+File ~\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pandas\core\reshape\concat.py:808, in _clean_keys_and_objs(objs, keys)
+    805     objs = list(objs)
+    807 if len(objs) == 0:
+--> 808     raise ValueError("No objects to concatenate")
+    810 if keys is not None:
+    811     if not isinstance(keys, Index):
 
-for file in files:
-
-    try:
-        # detect type again (simple reuse)
-        df_test = pd.read_excel(file, nrows=5)
-        cols = [str(c).lower() for c in df_test.columns]
-
-        if any("soc" in c or "tva" in c or "gsm" in c for c in cols):
-            df = process_type_1(file)
-        else:
-            df = process_type_2(file)
-
-        all_data.append(df)
-
-    except Exception as e:
-        print("Error:", file.name, e)
-
-final_df = pd.concat(all_data, ignore_index=True)
+ValueError: No objects to concatenate
