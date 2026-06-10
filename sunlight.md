@@ -1,4 +1,16 @@
-import pandas as pd
+try:
+    df = pd.read_excel(file, nrows=5)
+
+    for col in df.columns:
+        all_columns.add(str(col).strip())
+
+except Exception as e:
+    print("Error:", e)
+    
+    
+    
+    
+    import pandas as pd
 from pathlib import Path
 
 files = list(Path("Data").rglob("*.xlsx"))
