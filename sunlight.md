@@ -48,3 +48,6 @@ mapping = {
 
     "Commentaires":"COMMENTS"
 }
+df = pd.read_excel(files[0])
+print(df.head())
+print(df.columns)
