@@ -1,4 +1,33 @@
 import pandas as pd
+from pathlib import Path
+
+files = list(Path("Data").rglob("*.xlsx"))
+
+print("Total files found:", len(files))
+
+all_columns = set()
+
+for file in files[:50]:  # test first 50
+    try:
+        df = pd.read_excel(file, nrows=5)
+
+        print("Reading:", file.name)
+        print(df.columns)
+
+        for col in df.columns:
+            all_columns.add(str(col).strip())
+
+    except Exception as e:
+        print("Error in:", file.name, "->", e)
+
+print("\nALL COLUMNS FOUND:")
+print(sorted(all_columns))
+
+
+
+
+
+import pandas as pd
 
 all_columns = set()
 
