@@ -1,26 +1,25 @@
-def process_type_1(file):
-    df = pd.read_excel(file)
+from pathlib import Path
+import pandas as pd
 
-    df.columns = [str(c).strip().upper() for c in df.columns]
+files = list(Path("Data").rglob("*.xlsx"))
 
-    rename_map = {
-        "SOCIETE": "STE",
-        "RAISON SOCIALE": "STE",
-        "NOM": "NAME",
-        "TVA": "TVA",
-        "ADRESSE": "ADDRESS",
-        "CP": "CP",
-        "VILLE": "CITY",
-        "GSM": "GSM",
-        "TELEPHONE": "FIX"
-    }
+all_data = []
 
-    df.rename(columns=rename_map, inplace=True)
+for file in files:
 
-    df["SOURCE_FILE"] = file.name
+    try:
+        # detect type again (simple reuse)
+        df_test = pd.read_excel(file, nrows=5)
+        cols = [str(c).lower() for c in df_test.columns]
 
-    for col in COLUMNS:
-        if col not in df.columns:
-            df[col] = None
+        if any("soc" in c or "tva" in c or "gsm" in c for c in cols):
+            df = process_type_1(file)
+        else:
+            df = process_type_2(file)
 
-    return df[COLUMNS]
+        all_data.append(df)
+
+    except Exception as e:
+        print("Error:", file.name, e)
+
+final_df = pd.concat(all_data, ignore_index=True)
