@@ -13,3 +13,38 @@ for file in files:
         pass
 
 print(sorted(all_columns))
+
+
+mapping = {
+
+    "Société":"STE",
+    "Raison Sociale":"STE",
+    "Nom Société":"STE",
+
+    "Contact":"NAME",
+    "Nom":"NAME",
+    "Responsable":"NAME",
+
+    "TVA":"TVA",
+    "VAT":"TVA",
+
+    "Adresse":"ADDRESS",
+    "Lieu":"ADDRESS",
+
+    "CP":"CP",
+    "Code Postal":"CP",
+
+    "GSM":"GSM",
+    "Mobile":"GSM",
+
+    "Téléphone":"FIX",
+    "Fixe":"FIX",
+
+    "Forme Juridique":"FORME_JURIDIQUE",
+
+    "Code Linguistique":"CODE_LINGUISTIQUE",
+
+    "Civilité":"CIVILITE",
+
+    "Commentaires":"COMMENTS"
+}
