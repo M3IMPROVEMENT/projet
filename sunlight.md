@@ -19,3 +19,22 @@ def detect_file_type(file):
 
     except:
         return "TYPE_UNKNOWN"
+
+
+
+classified = []
+
+for file in files:
+    file_type = detect_file_type(file)
+
+    classified.append({
+        "file": file.name,
+        "type": file_type
+    })
+
+import pandas as pd
+df_types = pd.DataFrame(classified)
+
+df_types.to_excel("file_classification.xlsx", index=False)
+
+print(df_types["type"].value_counts())
