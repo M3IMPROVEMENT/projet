@@ -1,3 +1,2 @@
-from pathlib import Path
+[WindowsPath('master_companies.xlsx')]
 
-print(list(Path(".").rglob("master_companies.xlsx")))
